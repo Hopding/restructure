@@ -1,8 +1,15 @@
 {
-  "name": "restructure",
-  "version": "0.5.4",
+  "name": "@pdf-lib/restructure",
+  "version": "0.0.0",
   "description": "Declaratively encode and decode binary data",
   "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "cover": "mocha --require coverage.js --reporter html-cov > coverage.html",
+    "coveralls": "mocha --require coverage.js --reporter mocha-lcov-reporter | coveralls",
+    "prepublish": "coffee -c src/ index.coffee",
+    "postpublish": "rm -rf index.js src/*.js"
+  },
   "dependencies": {
     "browserify-optional": "^1.0.0"
   },
@@ -16,21 +23,9 @@
     "mocha": "~1.18.2",
     "mocha-lcov-reporter": "0.0.1"
   },
-  "browserify": {
-    "transform": [
-      "browserify-optional"
-    ]
-  },
-  "scripts": {
-    "test": "mocha",
-    "cover": "mocha --require coverage.js --reporter html-cov > coverage.html",
-    "coveralls": "mocha --require coverage.js --reporter mocha-lcov-reporter | coveralls",
-    "prepublish": "coffee -c src/ index.coffee",
-    "postpublish": "rm -rf index.js src/*.js"
-  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/devongovett/restructure.git"
+    "url": "git://github.com/Hopding/restructure.git"
   },
   "keywords": [
     "binary",
@@ -38,10 +33,22 @@
     "encode",
     "decode"
   ],
-  "author": "Devon Govett <devongovett@gmail.com>",
-  "license": "MIT",
+  "author": "Andrew Dillon <andrew.dillon.j@gmail.com>",
+  "contributors": [
+    "Devon Govett <devongovett@gmail.com> (http://badassjs.com/)"
+  ],
   "bugs": {
-    "url": "https://github.com/devongovett/restructure/issues"
+    "url": "https://github.com/Hopding/png-ts/issues"
   },
-  "homepage": "https://github.com/devongovett/restructure"
+  "license": "MIT",
+  "homepage": "https://github.com/Hopding/restructure",
+  "browserify": {
+    "transform": [
+      "browserify-optional"
+    ]
+  },
+  "private": false,
+  "directories": {
+    "test": "test"
+  }
 }
