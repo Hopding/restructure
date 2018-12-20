@@ -3,14 +3,8 @@ Struct = require './Struct'
 class VersionedStruct extends Struct
   constructor: (@type, @versions = {}) ->
     if typeof @type is 'string'
-      @versionGetter = (parent) ->
-        @type.split('.').reduce((obj, prop) ->
-          if obj.hasOwnProperty(prop) then obj[prop] else undefined
-        , parent)
-      @versionSetter = (parent, version) ->
-        @type.split('.').reduce((obj, prop, idx, {length}) ->
-          if obj then ( if idx + 1 isnt length then obj[prop] else (obj[prop] = version)) else undefined
-        , parent)
+      @versionGetter = new Function('parent', "return parent.#{@type}")
+      @versionSetter = new Function('parent', 'version', "return parent.#{@type} = version")
 
   decode: (stream, parent, length = 0) ->
     res = @_setup stream, parent, length
