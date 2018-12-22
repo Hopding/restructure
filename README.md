@@ -1,7 +1,20 @@
-# Restructure
+# Purpose of this Fork
+This project is a fork of https://github.com/foliojs/restructure created for use in https://github.com/Hopding/pdf-lib.
 
-[![Build Status](https://travis-ci.org/devongovett/restructure.svg?branch=master)](https://travis-ci.org/devongovett/restructure)
-[![Coverage Status](https://coveralls.io/repos/devongovett/restructure/badge.png?branch=master)](https://coveralls.io/r/devongovett/restructure?branch=master)
+Listed below are changes that have been made in this fork:
+
+* Remove usages of `new Function()` to allow usage on CSP sites:
+  * [0596e95](https://github.com/Hopding/restructure/commit/0596e9597801ed8a63f0af7e6f2f858d1aff5304)
+* Released to NPM as `@pdf-lib/restructure`
+  * [819fd2d](https://github.com/Hopding/restructure/commit/819fd2d1140cf06f4ebc5bfc3f1adbda0b2b5ec1)
+
+Also see
+* https://github.com/Hopding/fontkit
+* https://github.com/Hopding/unicode-properties
+* https://github.com/Hopding/brotli.js
+* https://github.com/Hopding/png-ts
+
+# Restructure
 
 Restructure allows you to declaratively encode and decode binary data.
 It supports a wide variety of types to enable you to express a multitude
@@ -17,7 +30,7 @@ This is just a small example of what Restructure can do. Check out the API docum
 below for more information.
 
 ```javascript
-var r = require('restructure');
+var r = require('@pdf-lib/restructure');
 
 var Person = new r.Struct({
   name: new r.String(r.uint8, 'utf8'),
@@ -210,8 +223,8 @@ var arr = new r.Array(r.uint16, 6, 'bytes');
 
 ### LazyArray
 
-The `LazyArray` type extends from the `Array` type, and is useful for large arrays that you do not need to access sequentially. 
-It avoids decoding the entire array upfront, and instead only decodes and caches individual items as needed. It only works when 
+The `LazyArray` type extends from the `Array` type, and is useful for large arrays that you do not need to access sequentially.
+It avoids decoding the entire array upfront, and instead only decodes and caches individual items as needed. It only works when
 the elements inside the array have a fixed size.
 
 Instead of returning a JavaScript array, the `LazyArray` type returns a custom object that can be used to access the elements.
@@ -265,7 +278,7 @@ var Person = new r.VersionedStruct(r.uint8, {
 ### Pointer
 
 Pointers map an address or offset encoded as a number, to a value encoded elsewhere in the buffer.
-There are a few options you can use: `type`, `relativeTo`, `allowNull`, and `nullValue`. 
+There are a few options you can use: `type`, `relativeTo`, `allowNull`, and `nullValue`.
 The `type` option has these possible values:
 
 * `local` (default) - the encoded offset is relative to the start of the containing structure
@@ -302,5 +315,4 @@ If the type of a pointer is set to 'void', it is not decoded and the computed ad
 is simply returned. To encode a void pointer, create a `new r.VoidPointer(type, value)`.
 
 ## License
-
-MIT
+[MIT](https://choosealicense.com/licenses/mit/)
