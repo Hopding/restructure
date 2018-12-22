@@ -3,7 +3,7 @@ This project is a fork of https://github.com/foliojs/restructure created for use
 
 Listed below are changes that have been made in this fork:
 
-* Remove usages of `new Function()` to allow usage on CSP sites:
+* Remove calls to `new Function()` to allow usage on CSP sites:
   * [0596e95](https://github.com/Hopding/restructure/commit/0596e9597801ed8a63f0af7e6f2f858d1aff5304)
 * Released to NPM as `@pdf-lib/restructure`
   * [819fd2d](https://github.com/Hopding/restructure/commit/819fd2d1140cf06f4ebc5bfc3f1adbda0b2b5ec1)
